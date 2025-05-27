@@ -8,6 +8,7 @@ import {useAuth} from "@/lib/use-auth";
 import {AuthProvider} from "@/lib/auth-context";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Toaster} from "@/components/ui/sonner";
+import './i18n';
 
 // Register things for typesafety
 // declare module '@tanstack/react-router' {

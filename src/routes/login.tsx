@@ -49,3 +49,5 @@ function LoginComponent() {
     <LayoutLogin onFormSubmit={onFormSubmit}/>
   )
 }
+
+export default LoginComponent

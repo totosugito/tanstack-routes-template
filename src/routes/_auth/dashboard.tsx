@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import {useAuth} from "@/lib/use-auth";
+import AppNavbar from "@/components/app/AppNavbar";
 
 export const Route = createFileRoute('/_auth/dashboard')({
   component: DashboardPage,
 })
 
 function DashboardPage() {
-  const auth = useAuth()
-
   return (
-    <section className="grid gap-2 p-2">
-      <p>Hi {auth.user?.email}!</p>
-      <p>You are currently on the dashboard route.</p>
-    </section>
+    <div className={"h-screen flex flex-col"}>
+      <AppNavbar title={""}/>
+      <div>
+
+      </div>
+    </div>
   )
 }
