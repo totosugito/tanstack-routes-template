@@ -1,6 +1,2 @@
-# Example
+## TanStack Router Template
 
-To run this example:
-
-- `npm install` or `yarn`
-- `npm start` or `yarn start`

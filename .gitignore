@@ -8,3 +8,6 @@ package-lock.json
 yarn.lock
 
 ./src/routeTree.gen.ts
+src/routeTree.gen.ts
+./stats.html
+stats.html
