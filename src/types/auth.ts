@@ -12,9 +12,10 @@ export type LoginProps = {
 export type AuthProps = {
   id: number
   email: string
-  role: number
-  fullname: string
-  token: string
+  role?: number
+  fullname?: string
+  token: string,
+  image?: string
 }
 
 export interface AuthContext {

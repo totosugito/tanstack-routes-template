@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import * as React from "react";
-import {useThemeStore} from "@/store/themeStore";
+import {useAppStore} from "@/store/useAppStore";
 
-type Theme = "dark" | "light" | "system";
+export type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
     children: React.ReactNode;
     defaultTheme?: Theme;
+    attribute?: string;
 };
 
 type ThemeProviderState = {
@@ -26,9 +27,9 @@ export function ThemeProvider({
                                   defaultTheme = "system",
                                   ...props
                               }: ThemeProviderProps) {
-    const themeStore = useThemeStore();
+    const appStore = useAppStore();
     const [theme, setTheme] = useState<Theme>(
-        () => (themeStore.theme as Theme) || defaultTheme
+        () => (appStore.theme as Theme) || defaultTheme
     );
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export function ThemeProvider({
     const value = {
         theme,
         setTheme: (theme: Theme) => {
-            themeStore.setTheme(theme);
+            appStore.setTheme(theme);
             setTheme(theme);
         },
     };

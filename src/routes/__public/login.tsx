@@ -12,7 +12,7 @@ import {useLoginMutation} from "@/service/auth";
 import {toast} from "sonner";
 
 const fallback = '/' as const
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute('/__public/login')({
   validateSearch: z.object({
     redirect: z.string().optional().catch(''),
   }),

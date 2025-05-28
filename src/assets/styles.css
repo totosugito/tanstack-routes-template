@@ -128,3 +128,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.divRoot {
+  @apply flex flex-col gap-2 bg-muted p-2 overflow-auto h-full w-full;
+}
+

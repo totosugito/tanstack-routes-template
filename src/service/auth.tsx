@@ -62,8 +62,7 @@ export const useLogoutMutation = () => {
       mutationFn: async () => {
         if (APP_CONFIG?.isDev) {
 
-        }
-        else {
+        } else {
           await fetchApi({
             method: 'POST',
             url: AppApi.auth.logout,
@@ -73,9 +72,10 @@ export const useLogoutMutation = () => {
 
         auth.logout().then(() => {
           router.invalidate().finally(() => {
-            navigate({ to: '/' }).then(()=>{})
           })
         })
+        await navigate({to: '/'});
+
         return {status: 1, message: "Successfully logged out"}
       },
     })

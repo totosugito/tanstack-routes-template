@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ReactDOM from 'react-dom/client'
 import {RouterProvider, createRouter} from '@tanstack/react-router'
 
@@ -10,6 +10,8 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Toaster} from "@/components/ui/sonner";
 import './i18n';
 import PageNotFound from "@/components/pages/PageNotFound";
+import {Theme, ThemeProvider} from "@/lib/theme-provider";
+import {useAppStore} from "@/store/useAppStore";
 
 // Register things for typesafety
 // declare module '@tanstack/react-router' {
@@ -37,17 +39,30 @@ const router = createRouter({
 
 function InnerApp() {
   const auth = useAuth()
+
+  // Important: update the router context BEFORE rendering RouterProvider
+  useEffect(() => {
+    router.update({
+      context: {
+        auth,
+      },
+    })
+  }, [auth])
+
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} context={{auth}}/>
+      <RouterProvider router={router}/>
     </QueryClientProvider>)
 }
 
 function App() {
+  const theme = useAppStore((state) => state?.theme ?? "light");
   return (
-    <AuthProvider>
-      <InnerApp/>
-    </AuthProvider>
+    <ThemeProvider defaultTheme={theme as Theme} attribute="class">
+      <AuthProvider>
+        <InnerApp/>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
@@ -56,9 +71,9 @@ const rootElement = document.getElementById('app')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
-    <React.StrictMode>
+    <>
       <App/>
-      <Toaster />
-    </React.StrictMode>,
+      <Toaster/>
+    </>,
   )
 }

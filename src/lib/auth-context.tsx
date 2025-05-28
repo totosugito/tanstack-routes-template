@@ -1,21 +1,21 @@
 import * as React from 'react'
-import { useAuthStore } from '@/store/authStore'
 import { AuthContext, AuthProps } from '@/types/auth'
+import {useAppStore} from "@/store/useAppStore";
 
 const AuthContextTag = React.createContext<AuthContext | null>(null)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const authStore = useAuthStore((state) => state)
-  const [user, setUser] = React.useState<AuthProps | null>(authStore.user)
-  const isAuthenticated = (!!user) && ((user?.token ?? "") !== "");
+  const appStore = useAppStore((state) => state)
+  const [user, setUser] = React.useState<AuthProps | null>(appStore.user)
+  const isAuthenticated = !!(user as Record<string, any>)?.token;
 
   const logout = React.useCallback(async () => {
-    authStore.logout()
+    appStore.logout()
     setUser(null)
   }, [])
 
   const login = React.useCallback(async (user: AuthProps) => {
-    authStore.login(user)
+    appStore.login(user)
     setUser(user)
   }, [])
 
