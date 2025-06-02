@@ -11,7 +11,7 @@ import {Toaster} from "@/components/ui/sonner";
 import './i18n';
 import PageNotFound from "@/components/pages/PageNotFound";
 import {Theme, ThemeProvider} from "@/lib/theme-provider";
-import {useAppStore} from "@/store/useAppStore";
+import {useAuthStore} from "@/stores/useAuthStore";
 
 // Register things for typesafety
 // declare module '@tanstack/react-router' {
@@ -56,7 +56,7 @@ function InnerApp() {
 }
 
 function App() {
-  const theme = useAppStore((state) => state?.theme ?? "light");
+  const theme = useAuthStore((state) => state?.theme ?? "light");
   return (
     <ThemeProvider defaultTheme={theme as Theme} attribute="class">
       <AuthProvider>

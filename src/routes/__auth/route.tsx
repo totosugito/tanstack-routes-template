@@ -1,9 +1,9 @@
 import {createFileRoute, Outlet} from '@tanstack/react-router'
 import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 import AppSidebar from "@/components/app/AppSidebar";
-import {UserNav} from "@/constant/user-nav";
+import {UserNav} from "@/constants/user-nav";
 import * as React from "react";
-import {useAppStore} from "@/store/useAppStore";
+import {useAuthStore} from "@/stores/useAuthStore";
 import {useEffect} from "react";
 
 export const Route = createFileRoute('/__auth')({
@@ -11,7 +11,7 @@ export const Route = createFileRoute('/__auth')({
 })
 
 function RouteComponent() {
-  const openSideMenu = useAppStore((state) => state?.openSideMenu ?? false);
+  const openSideMenu = useAuthStore((state) => state?.openSideMenu ?? false);
 
   useEffect(() => {
 

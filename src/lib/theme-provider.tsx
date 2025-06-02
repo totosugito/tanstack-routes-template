@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import * as React from "react";
-import {useAppStore} from "@/store/useAppStore";
+import {useAuthStore} from "@/stores/useAuthStore";
 
 export type Theme = "dark" | "light" | "system";
 
@@ -27,7 +27,7 @@ export function ThemeProvider({
                                   defaultTheme = "system",
                                   ...props
                               }: ThemeProviderProps) {
-    const appStore = useAppStore();
+    const appStore = useAuthStore();
     const [theme, setTheme] = useState<Theme>(
         () => (appStore.theme as Theme) || defaultTheme
     );

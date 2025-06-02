@@ -1,5 +1,5 @@
 import {createFileRoute, redirect} from '@tanstack/react-router'
-import {APP_CONFIG} from "@/constant/config";
+import {APP_CONFIG} from "@/constants/config";
 
 export const Route = createFileRoute('/')({
   loader: ({ context }) => {

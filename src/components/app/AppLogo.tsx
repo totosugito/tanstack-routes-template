@@ -1,7 +1,7 @@
 import React from "react";
 import {useSidebar} from "@/components/ui/sidebar";
 import {twMerge} from "tailwind-merge";
-import {APP_CONFIG} from "@/constant/config";
+import {APP_CONFIG} from "@/constants/config";
 
 const AppLogo = () => {
   const { state } = useSidebar();

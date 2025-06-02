@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { APP_CONFIG } from '@/constant/config';
+import { APP_CONFIG } from '@/constants/config';
 import { AuthProps } from '@/types/auth';
 
 type Store = {
@@ -14,7 +14,7 @@ type Store = {
   setOpenSideMenu: (openSideMenu: boolean) => void;
 };
 
-export const useAppStore = create<Store>()(
+export const useAuthStore = create<Store>()(
   persist(
     (set) => ({
       // Auth slice

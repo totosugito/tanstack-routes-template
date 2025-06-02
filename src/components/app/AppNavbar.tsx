@@ -15,7 +15,7 @@ import {TbLockPassword} from "react-icons/tb";
 import {Button} from "@/components/ui/button";
 import {FaRegUser} from "react-icons/fa";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {useAppStore} from "@/store/useAppStore";
+import {useAuthStore} from "@/stores/useAuthStore";
 import DialogModal from "@/components/custom/DialogModal";
 import {useLogoutMutation} from "@/service/auth";
 import {twMerge} from "tailwind-merge";
@@ -26,7 +26,7 @@ type AppNavbarProps = {
 
 const AppNavbar: React.FC<AppNavbarProps> = ({title}) => {
   const {t} = useTranslation();
-  const appStore = useAppStore();
+  const appStore = useAuthStore();
   const openSideMenu = appStore?.openSideMenu ?? false;
   const user = appStore?.user ?? null;
   const [confirmationModal, setConfirmationModal] = useState<any>(null);
