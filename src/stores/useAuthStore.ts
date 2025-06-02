@@ -29,7 +29,7 @@ export const useAuthStore = create<Store>()(
       setOpenSideMenu: (openSideMenu) => set({ openSideMenu }),
     }),
     {
-      name: `${APP_CONFIG.prefixStore}-app`, // single storage key
+      name: `${APP_CONFIG.prefixStore}-auth`, // single storage key
     }
   )
 );
