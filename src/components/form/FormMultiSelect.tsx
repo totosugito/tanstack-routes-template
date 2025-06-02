@@ -1,9 +1,10 @@
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {Input} from "@/components/ui/input";
 import React from "react";
-import {FormInputProps} from "@/types/form";
+import {FormMultiSelectProps} from "@/types/form";
+import {MultiSelect} from "@/components/custom/MultiSelect";
 
-const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |any}) => {
+const FormMultiSelect = ({form, item, ...props} : {form: any, item: FormMultiSelectProps | any}) => {
+
   return(
     <FormField
       control={form.control}
@@ -12,12 +13,13 @@ const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |an
         <FormItem>
           <FormLabel>{item.label}</FormLabel>
           <FormControl>
-            <Input
-              placeholder={item.placeholder}
-              className="input w-full"
-              readOnly={item?.readonly}
-              {...field}
-            />
+            <MultiSelect
+              {...props}
+              options={item?.options}
+              defaultValue={field.value}
+              onValueChange={field.onChange}
+              placeholder={item?.placeholder}
+              maxCount={item?.maxCount ?? 3}/>
           </FormControl>
           {item?.description && <FormDescription>{item.description}</FormDescription>}
           <FormMessage/>
@@ -26,4 +28,4 @@ const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |an
     />
   )
 }
-export default FormInput;
+export default FormMultiSelect;

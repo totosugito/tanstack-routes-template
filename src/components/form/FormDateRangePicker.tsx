@@ -1,9 +1,9 @@
 import {FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {Input} from "@/components/ui/input";
 import React from "react";
-import {FormInputProps} from "@/types/form";
+import {FormDateRangePickerProps} from "@/types/form";
+import {DatePickerWithRange} from "@/components/custom/DatePickerWithRange";
 
-const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |any}) => {
+const FormDateRangePicker = ({form, item, ...props} : {form: any, item: FormDateRangePickerProps | any}) => {
   return(
     <FormField
       control={form.control}
@@ -12,12 +12,9 @@ const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |an
         <FormItem>
           <FormLabel>{item.label}</FormLabel>
           <FormControl>
-            <Input
-              placeholder={item.placeholder}
-              className="input w-full"
-              readOnly={item?.readonly}
-              {...field}
-            />
+            <DatePickerWithRange {...props} fromDate={item.from} toDate={item.to} onDateChange={(v) => {
+              field.onChange(v);
+            }}/>
           </FormControl>
           {item?.description && <FormDescription>{item.description}</FormDescription>}
           <FormMessage/>
@@ -26,4 +23,4 @@ const FormInput = ({form, item, ...props} : {form: any, item: FormInputProps |an
     />
   )
 }
-export default FormInput;
+export default FormDateRangePicker;

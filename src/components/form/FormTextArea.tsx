@@ -19,6 +19,7 @@ const FormTextArea = ({form, item, ...props} : {form: any, item: FormTextAreaPro
               placeholder={item.placeholder}
               className="input w-full"
               rows={defaultRows}
+              readOnly={item?.readonly}
               {...field}
             />
           </FormControl>

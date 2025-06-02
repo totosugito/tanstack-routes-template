@@ -33,7 +33,11 @@ const FormCombobox = ({form, item, ...props}: { form: any, item: FormComboboxPro
       render={({field}) => (
         <FormItem>
           <FormLabel>{item.label}</FormLabel>
-          <Popover open={open} onOpenChange={setOpen} {...props} modal={true}>
+          <Popover open={open} onOpenChange={(v) => {
+            if(!item.readonly) {
+              setOpen(v);
+            }
+          }} {...props} modal={true}>
             <PopoverTrigger asChild>
               <FormControl>
                 <Button

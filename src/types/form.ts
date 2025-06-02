@@ -45,3 +45,33 @@ export type FormComboboxProps = {
   options?: Array<{label: string, value: string}>
   searchPlaceholder?: string
 }
+
+export type FormMultiSelectProps = {
+  name: string
+  label: string
+  placeholder?: string
+  description?: string
+  readonly?: boolean
+  selectLabel?: string
+  options?: Array<{label: string, value: string}>
+  searchPlaceholder?: string
+  maxCount?: number
+}
+
+export type FormDatePickerProps = {
+  name: string
+  label: string
+  placeholder?: string
+  description?: string
+  readonly?: boolean
+}
+
+export type FormDateRangePickerProps = {
+  name: string
+  label: string
+  placeholder?: string
+  description?: string
+  readonly?: boolean
+  from?: Date
+  to?: Date
+}

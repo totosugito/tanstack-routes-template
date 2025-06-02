@@ -24,6 +24,7 @@ const FormPassword = ({form, item, ...props}: { form: any, item: FormPasswordPro
                 type={showPassword ? "text" : "password"}
                 placeholder={item.placeholder}
                 className="input w-full"
+                readOnly={item?.readonly}
                 {...field}
               />
 
