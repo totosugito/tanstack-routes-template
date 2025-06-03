@@ -3,7 +3,7 @@ import React from "react";
 import {FormSelectProps} from "@/types/form";
 import {Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue} from "@/components/ui/select";
 
-const FormSelect = ({form, item, ...props}: { form: any, item: FormSelectProps | any}) => {
+const FormSelect = ({form, item, ...props}: { form: any, item: FormSelectProps}) => {
   return (
     <FormField
       control={form.control}
@@ -14,7 +14,7 @@ const FormSelect = ({form, item, ...props}: { form: any, item: FormSelectProps |
           <Select
             onValueChange={field.onChange}
             value={field.value}
-            open={item.readonly ? false : undefined}
+            {...props}
           >
             <FormControl>
               <SelectTrigger className={"w-full"}>

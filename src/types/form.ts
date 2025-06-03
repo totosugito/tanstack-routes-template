@@ -1,11 +1,15 @@
+import React from "react";
+import { UseFormReturn } from "react-hook-form";
 
 export type FormInputProps = {
-  name: string
-  label: string
-  placeholder?: string
-  description?: string
-  readonly?: boolean
-}
+  form: UseFormReturn<any>;
+  item: {
+    name: string;
+    label: string;
+    placeholder?: string;
+    description?: string;
+  };
+} & React.InputHTMLAttributes<HTMLInputElement>
 
 export type FormPasswordProps = {
   name: string
@@ -30,7 +34,7 @@ export type FormSelectProps = {
   label: string
   placeholder?: string
   description?: string
-  readonly?: boolean
+  disabled?: boolean
   selectLabel?: string
   options?: Array<{label: string, value: string}>
 }

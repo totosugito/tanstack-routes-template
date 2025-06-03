@@ -87,6 +87,7 @@ function RouteComponent() {
       description: "This is a description", readonly: false, from: new Date('01/12/2025'), to: new Date('01/12/2025')
     },
   }
+
   return (
     <div className={"flex flex-col gap-2 items-center"}>
       <div className={"min-w-md max-w-lg"}>
@@ -94,7 +95,7 @@ function RouteComponent() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onFormSubmit)} className={"flex flex-col gap-3"}>
-            <FormInput form={form} item={itemList.formInput}/>
+            <FormInput form={form} item={itemList.formInput} disabled={true}/>
             <FormPassword form={form} item={itemList.formPassword}/>
             <FormTextArea form={form} item={itemList.formTextArea}/>
             <FormSelect form={form} item={itemList.formSelect}/>

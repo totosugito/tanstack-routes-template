@@ -12,7 +12,7 @@ const FormDatePicker = ({form, item, ...props} : {form: any, item: FormDatePicke
         <FormItem>
           <FormLabel>{item.label}</FormLabel>
           <FormControl>
-            <DatePicker {...props} value={field.value} onChange={field.onChange} readonly={item?.readonly}/>
+            <DatePicker {...props} value={field.value} onChange={field.onChange}/>
           </FormControl>
           {item?.description && <FormDescription>{item.description}</FormDescription>}
           <FormMessage/>

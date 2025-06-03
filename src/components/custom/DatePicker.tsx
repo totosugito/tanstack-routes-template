@@ -22,16 +22,15 @@ import {useTypedDate} from "@/lib/react-typed-date";
 type DatePickerProps = {
   value: Date;
   onChange: (date: Date | undefined) => void;
-  readonly?: boolean;
+  disabled?: boolean;
 };
 
 
 export default function DatePicker({value, ...props}: DatePickerProps) {
-  const [date, setDate] = React.useState<Date>(new Date(value))
+  // const [date, setDate] = React.useState<Date>(new Date(value))
   const {inputProps} = useTypedDate({
-    value: date,
+    value: value || undefined,
     onChange: (e: any) => {
-      setDate(e);
       props.onChange(e);
     },
     format: "DD/MM/YYYY",
@@ -51,10 +50,10 @@ export default function DatePicker({value, ...props}: DatePickerProps) {
 
   return (
     <div className={"relative"}>
-      <Input {...inputProps} className={"w-full"} disabled={props?.readonly}/>
+      <Input {...inputProps} className={"w-full"} disabled={props?.disabled}/>
       <Popover>
         <PopoverTrigger asChild>
-          <Button type={"button"} variant={"link"} disabled={props?.readonly}
+          <Button type={"button"} variant={"link"} disabled={props?.disabled}
                   className="absolute inset-y-0 right-0 flex items-center text-muted-foreground">
             <CalendarIcon className="h-4 w-4"/>
           </Button>
@@ -64,9 +63,8 @@ export default function DatePicker({value, ...props}: DatePickerProps) {
           {/*<Calendar mode="single" selected={date} onSelect={setDate} autoFocus />*/}
           <Calendar
             mode="single"
-            selected={date}
+            selected={value || undefined}
             onSelect={(e: any) => {
-              setDate(e);
               props.onChange(e);
             }}
             className="p-2"
@@ -74,7 +72,7 @@ export default function DatePicker({value, ...props}: DatePickerProps) {
             // month_caption: "mx-0",
             // }}
             captionLayout="dropdown"
-            defaultMonth={date}
+            defaultMonth={value || new Date()}
             startMonth={new Date(1980, 6)}
             endMonth={addYears(new Date(), 10)}
             hideNavigation

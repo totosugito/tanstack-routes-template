@@ -4,7 +4,6 @@ import {FormMultiSelectProps} from "@/types/form";
 import {MultiSelect} from "@/components/custom/MultiSelect";
 
 const FormMultiSelect = ({form, item, ...props} : {form: any, item: FormMultiSelectProps | any}) => {
-
   return(
     <FormField
       control={form.control}
@@ -16,7 +15,7 @@ const FormMultiSelect = ({form, item, ...props} : {form: any, item: FormMultiSel
             <MultiSelect
               {...props}
               options={item?.options}
-              defaultValue={field.value}
+              value={field.value}
               onValueChange={field.onChange}
               placeholder={item?.placeholder}
               maxCount={item?.maxCount ?? 3}/>
