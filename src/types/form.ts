@@ -1,4 +1,3 @@
-import React from "react";
 import { UseFormReturn } from "react-hook-form";
 
 export type FormInputProps = {
@@ -9,7 +8,8 @@ export type FormInputProps = {
     placeholder?: string;
     description?: string;
   };
-} & React.InputHTMLAttributes<HTMLInputElement>
+  disabled?: boolean;
+}
 
 export type FormPasswordProps = {
   name: string
