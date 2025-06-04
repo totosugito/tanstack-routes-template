@@ -4,7 +4,7 @@ import {RouterProvider, createRouter} from '@tanstack/react-router'
 
 import {routeTree} from './routeTree.gen'
 import './assets/styles.css'
-import {useAuth} from "@/lib/use-auth";
+import {useAuth} from "@/hooks/use-auth";
 import {AuthProvider} from "@/lib/auth-context";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {Toaster} from "@/components/ui/sonner";

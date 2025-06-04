@@ -1,7 +1,7 @@
 import {fetchApi} from "@/lib/fetch-api";
 import {AppApi} from "@/service/api";
 import {useMutation} from "@tanstack/react-query";
-import {useAuth} from "@/lib/use-auth";
+import {useAuth} from "@/hooks/use-auth";
 import {APP_CONFIG} from "@/constants/config";
 import {useNavigate, useRouter} from "@tanstack/react-router";
 
